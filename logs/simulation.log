@@ -1,0 +1,37 @@
+[2025-10-27 17:37:57] Starting simulation...
+INSERTED Refrigerator into DB with power 305W at 2025-10-27 17:37:57
+
+[2025-10-27 17:38:13] Simulation initiated...
+INSERTED Refrigerator into DB with power 314W at 2025-10-27 17:38:13
+
+[2025-10-27 17:38:20] Simulation initiated...
+INSERTED Refrigerator into DB with power 290W at 2025-10-27 17:38:20
+
+[2025-10-27 17:39:26] Simulation initiated...
+INSERTED Refrigerator into DB with power 298W at 2025-10-27 17:39:26
+Simulation completed successfully.
+
+[2025-10-27 17:40:21] Simulation initiated...
+Simulation ended with error: cannot access local variable 'i' where it is not associated with a value
+
+[2025-10-27 17:40:31] Simulation initiated...
+Simulation ended with error: cannot access local variable 'i' where it is not associated with a value
+
+[2025-10-27 18:43:03] Simulation initiated...
+(1)INSERTED Refrigerator into DB with power 305W at 2025-10-27 18:43:03
+(2)INSERTED Europace Portable AC into DB with power 2075W at 2025-10-27 18:43:03
+(3)INSERTED Wall mounted AC into DB with power 3444W at 2025-10-27 18:43:03
+Simulation completed successfully.
+
+[2025-10-27 18:43:18] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 312W at 2025-10-27 18:43:18
+(2) INSERTED Europace Portable AC into DB with power 2183W at 2025-10-27 18:43:18
+(3) INSERTED Wall mounted AC into DB with power 3649W at 2025-10-27 18:43:18
+Simulation completed successfully.
+
+[2025-10-27 18:43:25] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 309W at 2025-10-27 18:43:25
+(2) INSERTED Europace Portable AC into DB with power 2020W at 2025-10-27 18:43:25
+(3) INSERTED Wall mounted AC into DB with power 3379W at 2025-10-27 18:43:25
+Simulation completed successfully.
+
