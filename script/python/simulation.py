@@ -1,9 +1,13 @@
 from datetime import datetime, timedelta
 from random import randint, seed
-import psycopg2
 from dotenv import load_dotenv
 import os
 import logging
+import sqlalchemy
+from sqlalchemy import text
+import pandas as pd
+
+from utilities.connect_to_database import connect_db
 
 ############################
 # 
@@ -34,40 +38,11 @@ i = 1
 #
 ############################    
 
-def connect_db():
-    """
-    Load environment variables and open a connection to the PostgreSQL database.
-
-    Reads the following environment variables (via python-dotenv):
-      - HOST_NAME
-      - ELECTRICITY_DATABASE_NAME
-      - USER_NAME
-      - ELECTRICITY_DATABASE_KEY
-
-    Returns:
-      psycopg2.cursor: A cursor object for executing SQL statements.
-
-    Notes:
-      - This function calls load_dotenv() so a .env file will be loaded if present.
-      - The underlying connection object is created but not returned; the caller
-        is responsible for committing and closing the connection if needed.
-      - psycopg2 exceptions (e.g. OperationalError) will propagate on failure.
-    """
-    conn = psycopg2.connect(
-        host=HOST_NAME,
-        dbname=ELECTRICITY_DATABASE_NAME,
-        user=USER_NAME,
-        password=DB_KEY,
-    )
-    
-    cur = conn.cursor()
-    
-    return (conn, cur)
-
-def insert_sql_statement(appliance_name:str, 
+def insert_into_db(appliance_name:str, 
                          power:int, 
                          now:datetime, 
-                         logger: logging.Logger) -> str:
+                         logger: logging.Logger,
+                         engine: sqlalchemy.engine.base.Engine) -> None:
     """
     Build an INSERT SQL statement for a given appliance and a power draw.
 
@@ -99,12 +74,19 @@ def insert_sql_statement(appliance_name:str,
     
     logger.info(f'({i}) INSERTED {appliance_name} into DB with power {final_power}W at {printed_time}')
     i += 1
-    return f"""
-        INSERT INTO {ELECTRICITY_CONSUMPTION_TABLE_NAME} ({column_names_sql})
-        VALUES ('{appliance_name}', {final_power}, NOW());     
-    """
+    params = {
+        'appliance_name': appliance_name,
+        'final_power': final_power,
+    }
+    sql_text = text(f"""
+        INSERT INTO {ELECTRICITY_CONSUMPTION_TABLE_NAME} ({column_names_sql}) 
+        VALUES (:appliance_name, :final_power, NOW());
+      """)
+    with engine.connect() as conn:
+      conn.execute(sql_text, params)
+      conn.commit()
     
-def simulate_refrigerator_usage(cur: psycopg2.extensions.cursor, 
+def simulate_refrigerator_usage(engine: sqlalchemy.engine.base.Engine, 
                                  now:datetime, 
                                  logger: logging.Logger) -> None:
     """
@@ -118,12 +100,10 @@ def simulate_refrigerator_usage(cur: psycopg2.extensions.cursor,
       now (datetime): current timestamp (used for logging/printing).
       logger (logging.Logger): logger instance for logging errors/info.
     """
-    refrigerator_rating = ("Refrigerator", 300, now, logger)
-    refrigerator_insert_statement = insert_sql_statement(*refrigerator_rating)
-    cur.execute(refrigerator_insert_statement)
-    return cur
+    refrigerator_rating = ("Refrigerator", 300, now, logger, engine)
+    insert_into_db(*refrigerator_rating)  
 
-def simulate_airconditioner_usage(cur: psycopg2.extensions.cursor, 
+def simulate_airconditioner_usage(engine: sqlalchemy.engine.base.Engine, 
                                   now:datetime,
                                   logger: logging.Logger) -> None:
     """
@@ -138,26 +118,29 @@ def simulate_airconditioner_usage(cur: psycopg2.extensions.cursor,
       now (datetime): current timestamp used to decide activity window.
       logger (logging.Logger): logger instance for logging errors/info.
     """
-    # ensure reproducibility for same day
-    today_seed = int(now.strftime('%Y%m%d'))
-    seed(today_seed)
+    def get_boundaries(family_member:str) -> tuple[int, int]:
+      seed_suffix = 1 if family_member == "Parents" else 0
+      today_seed = int(now.strftime(f'%Y%m%d{seed_suffix}'))
+      seed(today_seed)
+      if family_member == "Chris":
+        morning_upper_bound = randint(9, 12)
+        night_upper_bound = randint(16, 20)
+      elif family_member == "Parents":
+        morning_upper_bound = randint(6, 10)
+        night_upper_bound = randint(18, 20)
+      return morning_upper_bound, night_upper_bound
     
-    morning_upper_bound = randint(6, 10)
-    night_upper_bound = randint(18, 24)
-
+    # Chris' Portable AC
+    morning_upper_bound, night_upper_bound = get_boundaries("Chris")
     if now.hour <= morning_upper_bound or now.hour >= night_upper_bound:
-        # airconditioners
-        airconditioners_dict = {
-            "Europace Portable AC": 2100,
-            "Wall mounted AC": 3500,
-        }
-        
-        for appliance, power in airconditioners_dict.items():
-            insert_statement = insert_sql_statement(appliance, power, now, logger)
-            cur.execute(insert_statement)
-    return cur
+      insert_into_db("Europace Portable AC", 2100, now, logger, engine)
+    
+    # Parents' Wall mounted AC
+    morning_upper_bound, night_upper_bound = get_boundaries("Parents")
+    if now.hour <= morning_upper_bound or now.hour >= night_upper_bound:
+      insert_into_db("Wall mounted AC", 3500, now, logger, engine)
 
-def simulate_washing_machine_usage(cur: psycopg2.extensions.cursor, 
+def simulate_washing_machine_usage(engine: sqlalchemy.engine.base.Engine, 
                                    now: datetime, 
                                    logger: logging.Logger) -> None:
     """
@@ -179,11 +162,8 @@ def simulate_washing_machine_usage(cur: psycopg2.extensions.cursor,
     morning_upper_bound = randint(7,9)
     
     if now.hour >= morning_lower_bound and now.hour <= morning_upper_bound: 
-        washing_machine_rating = ("Washing Machine", 1000, now, logger)
-        washing_machine_insert_statement = insert_sql_statement(*washing_machine_rating) 
-        cur.execute(washing_machine_insert_statement)
-    return cur
-
+        washing_machine_rating = ("Washing Machine", 1000, now, logger, engine)
+        insert_into_db(*washing_machine_rating) 
 
 ###################
 #
@@ -219,20 +199,16 @@ def main():
         logger.info(f"[{datetime.strftime(now_dttm, '%Y-%m-%d %H:%M:%S')}] Simulation initiated...")
         
         # create cursor object for inserting into database    
-        conn, cur = connect_db()
+        engine = connect_db()
         
         # simulate refrigerator
-        cur = simulate_refrigerator_usage(cur, now_dttm, logger)
+        simulate_refrigerator_usage(engine, now_dttm, logger)
         
         # simulate airconditioners
-        cur = simulate_airconditioner_usage(cur, now_dttm, logger)
+        simulate_airconditioner_usage(engine, now_dttm, logger)
         
         # simulate washing machine
-        cur = simulate_washing_machine_usage(cur, now_dttm, logger)
-
-        conn.commit()
-        cur.close()
-        conn.close()
+        simulate_washing_machine_usage(engine, now_dttm, logger)
         logger.info("Simulation completed successfully.\n")
     except Exception as e:
         logger.error(f"Simulation ended with error: {e}\n")

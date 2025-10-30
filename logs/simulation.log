@@ -1211,3 +1211,9 @@ Simulation completed successfully.
 (1) INSERTED Refrigerator into DB with power 291W at 2025-10-30 17:55:03
 Simulation completed successfully.
 
+[2025-10-30 20:32:00] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 303W at 2025-10-30 20:32:00
+(2) INSERTED Europace Portable AC into DB with power 2200W at 2025-10-30 20:32:00
+(3) INSERTED Wall mounted AC into DB with power 3412W at 2025-10-30 20:32:00
+Simulation completed successfully.
+
