@@ -143,7 +143,7 @@ def simulate_airconditioner_usage(cur: psycopg2.extensions.cursor,
     seed(today_seed)
     
     morning_upper_bound = randint(6, 10)
-    night_upper_bound = randint(4, 24)
+    night_upper_bound = randint(18, 24)
 
     if now.hour <= morning_upper_bound or now.hour >= night_upper_bound:
         # airconditioners
