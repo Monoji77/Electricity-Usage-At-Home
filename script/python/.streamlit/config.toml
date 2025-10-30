@@ -1,0 +1,16 @@
+# Server settings
+[server]
+headless = true
+
+# Browser settings
+[browser]
+gatherUsageStats = false
+
+# Theme settings (makes it look nicer)
+[theme]
+base = "dark"  
+primaryColor = "#1f77b4"  # your brand color
+font = "sans serif"  # options: "sans serif", "serif", "monospace"
+# backgroundColor = "#f0f2f6"
+# secondaryBackgroundColor = "#e6eef8"
+# textColor = "#262730"

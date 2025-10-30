@@ -1211,3 +1211,132 @@ Simulation completed successfully.
 (1) INSERTED Refrigerator into DB with power 291W at 2025-10-30 17:55:03
 Simulation completed successfully.
 
+[2025-10-30 18:15:05] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 303W at 2025-10-30 18:15:05
+Simulation completed successfully.
+
+[2025-10-30 18:20:05] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 309W at 2025-10-30 18:20:05
+Simulation completed successfully.
+
+[2025-10-30 18:25:05] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 297W at 2025-10-30 18:25:05
+Simulation completed successfully.
+
+[2025-10-30 18:30:05] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 286W at 2025-10-30 18:30:05
+Simulation completed successfully.
+
+[2025-10-30 18:35:05] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 286W at 2025-10-30 18:35:05
+Simulation completed successfully.
+
+[2025-10-30 18:40:05] Simulation initiated...
+Simulation ended with error: name 'connect_db' is not defined
+
+[2025-10-30 18:43:43] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 305W at 2025-10-30 18:43:43
+Simulation completed successfully.
+
+[2025-10-30 18:45:05] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 311W at 2025-10-30 18:45:05
+Simulation completed successfully.
+
+[2025-10-30 18:50:06] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 287W at 2025-10-30 18:50:06
+Simulation completed successfully.
+
+[2025-10-30 19:14:11] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 301W at 2025-10-30 19:14:11
+Simulation ended with error: mapping or list expected for parameters
+
+[2025-10-30 19:15:08] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 310W at 2025-10-30 19:15:08
+Simulation ended with error: mapping or list expected for parameters
+
+[2025-10-30 19:16:36] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 289W at 2025-10-30 19:16:36
+Simulation ended with error: Not an executable object: "\n        INSERT INTO electricity_consumption (appliance_name, power_consumption_val, recorded_at_timestamp)\n        VALUES ('Refrigerator', 289, NOW());     \n    "
+
+[2025-10-30 19:17:58] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 296W at 2025-10-30 19:17:58
+Simulation ended with error: Not an executable object: "INSERT INTO electricity_consumption (appliance_name, power_consumption_val, recorded_at_timestamp) VALUES ('Refrigerator', 296, NOW());"
+
+[2025-10-30 19:20:08] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 292W at 2025-10-30 19:20:08
+Simulation ended with error: Not an executable object: "INSERT INTO electricity_consumption (appliance_name, power_consumption_val, recorded_at_timestamp) VALUES ('Refrigerator', 292, NOW());"
+
+[2025-10-30 19:24:58] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 297W at 2025-10-30 19:24:58
+(2) INSERTED Europace Portable AC into DB with power 2173W at 2025-10-30 19:24:58
+(3) INSERTED Wall mounted AC into DB with power 3432W at 2025-10-30 19:24:58
+Simulation completed successfully.
+
+[2025-10-30 19:25:08] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 288W at 2025-10-30 19:25:08
+(2) INSERTED Europace Portable AC into DB with power 2036W at 2025-10-30 19:25:08
+(3) INSERTED Wall mounted AC into DB with power 3650W at 2025-10-30 19:25:08
+Simulation completed successfully.
+
+[2025-10-30 19:30:08] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 295W at 2025-10-30 19:30:08
+(2) INSERTED Europace Portable AC into DB with power 2179W at 2025-10-30 19:30:08
+(3) INSERTED Wall mounted AC into DB with power 3329W at 2025-10-30 19:30:08
+Simulation completed successfully.
+
+[2025-10-30 19:35:07] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 307W at 2025-10-30 19:35:07
+(2) INSERTED Europace Portable AC into DB with power 2005W at 2025-10-30 19:35:07
+(3) INSERTED Wall mounted AC into DB with power 3540W at 2025-10-30 19:35:07
+Simulation completed successfully.
+
+[2025-10-30 19:40:07] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 298W at 2025-10-30 19:40:07
+(2) INSERTED Europace Portable AC into DB with power 2197W at 2025-10-30 19:40:07
+(3) INSERTED Wall mounted AC into DB with power 3525W at 2025-10-30 19:40:07
+Simulation completed successfully.
+
+[2025-10-30 19:45:07] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 286W at 2025-10-30 19:45:07
+Simulation ended with error: cannot access local variable 'morning_upper_bound' where it is not associated with a value
+
+[2025-10-30 19:54:46] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 312W at 2025-10-30 19:54:46
+Simulation completed successfully.
+
+[2025-10-30 19:54:53] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 309W at 2025-10-30 19:54:53
+Simulation completed successfully.
+
+[2025-10-30 19:55:07] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 299W at 2025-10-30 19:55:07
+Simulation completed successfully.
+
+[2025-10-30 19:55:36] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 313W at 2025-10-30 19:55:36
+Simulation completed successfully.
+
+[2025-10-30 19:56:21] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 285W at 2025-10-30 19:56:21
+(2) INSERTED Europace Portable AC into DB with power 2113W at 2025-10-30 19:56:21
+(3) INSERTED Wall Mounted AC into DB with power 3660W at 2025-10-30 19:56:21
+Simulation completed successfully.
+
+[2025-10-30 19:56:51] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 285W at 2025-10-30 19:56:51
+(2) INSERTED Europace Portable AC into DB with power 2092W at 2025-10-30 19:56:51
+(3) INSERTED Wall Mounted AC into DB with power 3345W at 2025-10-30 19:56:51
+Simulation completed successfully.
+
+[2025-10-30 20:00:07] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 297W at 2025-10-30 20:00:07
+(2) INSERTED Europace Portable AC into DB with power 2037W at 2025-10-30 20:00:07
+(3) INSERTED Wall mounted AC into DB with power 3459W at 2025-10-30 20:00:07
+Simulation completed successfully.
+
+[2025-10-30 20:05:07] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 307W at 2025-10-30 20:05:07
+(2) INSERTED Europace Portable AC into DB with power 2109W at 2025-10-30 20:05:07
+(3) INSERTED Wall mounted AC into DB with power 3408W at 2025-10-30 20:05:07
+Simulation completed successfully.
+
