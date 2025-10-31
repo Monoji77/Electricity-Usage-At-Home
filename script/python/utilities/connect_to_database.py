@@ -28,6 +28,8 @@ def connect_db():
         is responsible for committing and closing the connection if needed.
       - psycopg2 exceptions (e.g. OperationalError) will propagate on failure.
     """
-    engine = create_engine(f"postgresql+psycopg2://{USER_NAME}:{DB_KEY}@{HOST_NAME}/{ELECTRICITY_DATABASE_NAME}")
+    engine = create_engine(f"postgresql+psycopg2://{USER_NAME}:{DB_KEY}@{HOST_NAME}:5432/{ELECTRICITY_DATABASE_NAME}")
     
     return engine
+  
+print(HOST_NAME, ELECTRICITY_DATABASE_NAME, USER_NAME, DB_KEY)
