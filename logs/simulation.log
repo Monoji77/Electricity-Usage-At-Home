@@ -1340,3 +1340,93 @@ Simulation completed successfully.
 (3) INSERTED Wall mounted AC into DB with power 3408W at 2025-10-30 20:05:07
 Simulation completed successfully.
 
+[2025-10-31 11:09:51] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 289W at 2025-10-31 11:09:51
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+[2025-10-31 11:10:04] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 288W at 2025-10-31 11:10:04
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+[2025-10-31 11:15:10] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 309W at 2025-10-31 11:15:10
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+[2025-10-31 11:20:10] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 295W at 2025-10-31 11:20:10
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+[2025-10-31 11:25:04] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 304W at 2025-10-31 11:25:04
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+[2025-10-31 11:30:11] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 294W at 2025-10-31 11:30:11
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+[2025-10-31 11:35:06] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 289W at 2025-10-31 11:35:06
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+[2025-10-31 11:47:05] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 314W at 2025-10-31 11:47:05
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+[2025-10-31 11:50:05] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 292W at 2025-10-31 11:50:05
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+[2025-10-31 11:55:09] Simulation initiated...
+(1) INSERTED Refrigerator into DB with power 289W at 2025-10-31 11:55:09
+Simulation ended with error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
