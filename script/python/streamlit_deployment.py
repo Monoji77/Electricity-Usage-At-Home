@@ -4,8 +4,11 @@ from streamlit_echarts5 import st_pyecharts
 import streamlit as st
 from utilities.connect_to_database import connect_db
 import pandas as pd
+import plotly.express as px
 
-
+######## GLOBAL VARIABLES #######
+APPLIANCE_NAME = 'appliance_name'
+TOTAL_USAGE_MINUTES = 'total_usage_minutes'
 # connect to database
 engine = connect_db()
 sql_query = "SELECT * FROM electricity_consumption;"
@@ -35,40 +38,38 @@ total_usage_query = f"""
 """
 
 total_usage_df = pd.read_sql(total_usage_query, engine)
-unique_appliance_names_list = total_usage_df['appliance_name'].tolist()
-total_usage_per_appliance_list = total_usage_df['total_usage_minutes'].tolist()
+# unique_appliance_names_list = total_usage_df['appliance_name'].tolist()
+# total_usage_per_appliance_list = total_usage_df['total_usage_minutes'].tolist()
+# Horizontal bar chart
+# Streamlit multiselect for filtering categories
+selected_fruits = st.multiselect(
+    "Select appliance for display:",
+    options=total_usage_df[APPLIANCE_NAME],
+    default=total_usage_df[APPLIANCE_NAME]  # show all by default
+)
+
+filtered_df = total_usage_df[total_usage_df[APPLIANCE_NAME].isin(selected_fruits)]
+
+# Create horizontal bar chart
+fig = px.bar(
+    filtered_df,
+    x=TOTAL_USAGE_MINUTES,
+    y=APPLIANCE_NAME,
+    orientation='h',
+    color=APPLIANCE_NAME,
+    text=TOTAL_USAGE_MINUTES,
+    title='Total Usage Time per Appliance (in minutes)'
+)
+
+fig.update_layout(
+    yaxis={'categoryorder':'total ascending'},  # sort bars
+    xaxis_title='Quantity',
+    yaxis_title='Fruits'
+)
+
 
 # streamlit app
 st.title("Electricity consumption in the Yong household")
-# Example: wrap long labels at 10 characters per line
-def wrap_label(label, width=10):
-    return "\n".join([label[i:i+width] for i in range(0, len(label), width)])
 
-b = (
-    Bar(init_opts=opts.InitOpts(width="1400px", height="600px"))  # 🔑 adjust size here
-    .add_xaxis(unique_appliance_names_list)
-    .add_yaxis(
-        "Total time used (min)", total_usage_per_appliance_list
-    )
-    .set_global_opts(
-        title_opts=opts.TitleOpts(
-            title="Most used appliances", subtitle="2025 Oct"
-        ),
-        toolbox_opts=opts.ToolboxOpts(),
-        xaxis_opts=opts.AxisOpts(
-            name="Total usage (min)",
-            splitline_opts=opts.SplitLineOpts(is_show=False),  # remove vertical gridlines
-            axisline_opts=opts.AxisLineOpts(is_on_zero=True),
-            axislabel_opts=opts.LabelOpts(margin=20),  # add space so labels are not blocked
-
-        ),
-        yaxis_opts=opts.AxisOpts(
-            axisline_opts=opts.AxisLineOpts(is_show=True),  # show left axis line
-            axislabel_opts=opts.LabelOpts(margin=0,  formatter=lambda x: wrap_label(x, width=10)),  # wrap long labels,  # <-- extra margin
-            splitline_opts=opts.SplitLineOpts(is_show=False),  # remove horizontal gridlines
-        ),
-    )
-    .reversal_axis()
-
-)
-st_pyecharts(b)
+# Display in Streamlit
+st.plotly_chart(fig, use_container_width=True)
