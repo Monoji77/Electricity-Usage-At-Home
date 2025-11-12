@@ -1,7 +1,5 @@
 from datetime import datetime, timedelta
 from random import randint, seed
-from dotenv import load_dotenv
-import os
 import logging
 import sqlalchemy
 from sqlalchemy import text
@@ -15,19 +13,22 @@ from utilities.connect_to_database import connect_db
 #
 ############################
 
-# database connection parameters
-load_dotenv()
-HOST_NAME = os.getenv('HOST_NAME')
-ELECTRICITY_DATABASE_NAME = os.getenv('ELECTRICITY_DATABASE_NAME')
-USER_NAME = os.getenv('USER_NAME')
-DB_KEY = os.getenv('ELECTRICITY_DATABASE_KEY')
+# # database connection parameters
+# load_dotenv()
+# HOST_NAME = os.getenv('HOST_NAME')
+# ELECTRICITY_DATABASE_NAME = os.getenv('ELECTRICITY_DATABASE_NAME')
+# USER_NAME = os.getenv('USER_NAME')
+# DB_KEY = os.getenv('ELECTRICITY_DATABASE_KEY')
 
 # destination table column names
-ELECTRICITY_CONSUMPTION_TABLE_NAME = 'electricity_consumption'
+SCHEMA_NAME = 'bronze'
+ELECTRICITY_CONSUMPTION_TABLE_NAME = f'{SCHEMA_NAME}.electricity_consumption'
 APPLIANCE_NAME = 'appliance_name'
 POWER_CONSUMPTION_VAL =  'power_consumption_val' 
 RECORDED_AT_TIMESTAMP = 'recorded_at_timestamp'
 column_names_sql = ', '.join([APPLIANCE_NAME, POWER_CONSUMPTION_VAL, RECORDED_AT_TIMESTAMP])    
+
+# destination schema name
 
 # logger counter
 i = 1
@@ -72,7 +73,7 @@ def insert_into_db(appliance_name:str,
     
     global i
     
-    logger.info(f'({i}) INSERTED {appliance_name} into DB with power {final_power}W at {printed_time}')
+    logger.info(f'({i}) INSERTED {appliance_name} into {ELECTRICITY_CONSUMPTION_TABLE_NAME} with power {final_power}W at {printed_time}')
     i += 1
     params = {
         'appliance_name': appliance_name,
